@@ -241,7 +241,7 @@ export default function MenchLanding() {
               <span className="dim">One place.</span>
             </h1>
             <p className="hero-sub">
-              From split agreements and record deal analysis to streaming data and show routing. Everything you need to run your business in one place. Every artist's team looks different. This is just the tool to run it.
+              From split agreements and record deal analysis to streaming data and show routing — everything you need to run your business is in one place. Every artist's team looks different. This is just the tool to run it.
             </p>
           </div>
 
