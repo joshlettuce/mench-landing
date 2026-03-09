@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const SUPABASE_URL = "https://xgexwayghogesqhdbzfv.supabase.co";
-const SUPABASE_KEY = "sb_publishable_R0INuGkKDXGkBLJUR3sKRg_6A7JTPPe";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE4OTM0NTYwMDB9.9sLTrc6ym8hjc0HD9tArbFT0EGLg6YLsbyjrcxEBB4A";
 
 const style = `
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap');
