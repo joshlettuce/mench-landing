@@ -203,17 +203,20 @@ export default function MenchLanding() {
   useEffect(() => { loadSignups(); }, []);
 
   const loadSignups = async () => {
-    try {
-      const r = await window.storage.get("mench-beta-signups");
-      if (r) setSignups(JSON.parse(r.value));
-    } catch {}
+    const { data } = await supabase.from("beta_signups").select("*").order("created_at", { ascending: false });
+    if (Array.isArray(data)) setSignups(data);
   };
 
   const handleSubmit = async () => {
     if (!form.name || !form.email || !form.phone) return;
     setLoading(true);
-    try {
-      const entry = { ...form, ts: new Date().toISOString() };
+    const { error } = await supabase.from("beta_signups").insert({
+      name: form.name, email: form.email, phone: form.phone,
+    });
+    if (error) { alert("Error: " + error.message); }
+    else { setSubmitted(true); loadSignups(); }
+    setLoading(false);
+  };
       const updated = [...signups, entry];
       await window.storage.set("mench-beta-signups", JSON.stringify(updated));
       setSignups(updated);
