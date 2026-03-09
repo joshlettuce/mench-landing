@@ -208,6 +208,7 @@ export default function MenchLanding() {
   };
 
   const handleSubmit = async () => {
+    console.log("submit called", form);
     if (!form.name || !form.email || !form.phone) return;
     setLoading(true);
     const { error } = await supabase.from("beta_signups").insert({
