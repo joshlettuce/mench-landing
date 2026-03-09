@@ -218,13 +218,7 @@ export default function MenchLanding() {
     else { setSubmitted(true); loadSignups(); }
     setLoading(false);
   };
-      const updated = [...signups, entry];
-      await window.storage.set("mench-beta-signups", JSON.stringify(updated));
-      setSignups(updated);
-      setSubmitted(true);
-    } catch {}
-    setLoading(false);
-  };
+
 
   const fmtDate = (iso) => new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 
