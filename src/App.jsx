@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { useState } from "react";
 
-const supabase = createClient("https://xgexwayghogesqhdbzfv.supabase.co", "sb_publishable_R0INuGkKDXGkBLJUR3sKRg_6A7JTPPe");
+const SUPABASE_URL = "https://xgexwayghogesqhdbzfv.supabase.co";
+const SUPABASE_KEY = "sb_publishable_R0INuGkKDXGkBLJUR3sKRg_6A7JTPPe";
 
 const style = `
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap');
@@ -143,6 +143,10 @@ const style = `
   .submit-btn:hover { background: #ddd8ef; }
   .submit-btn:disabled { opacity: 0.28; cursor: not-allowed; }
 
+  .error-msg {
+    font-size: 12px; color: #e07070; margin-top: 12px; text-align: center;
+  }
+
   .success { text-align: center; padding: 28px 0; }
   .success-check {
     width: 44px; height: 44px; border-radius: 50%;
@@ -152,24 +156,6 @@ const style = `
   }
   .success h3 { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
   .success p { font-size: 12px; color: var(--muted); }
-
-  .admin-trigger {
-    text-align: center; padding-bottom: 28px;
-    font-size: 11px; color: var(--border2); cursor: pointer;
-    transition: color 0.2s; letter-spacing: 0.04em;
-  }
-  .admin-trigger:hover { color: var(--muted); }
-
-  .admin-wrap { max-width: 720px; margin: 0 auto 72px; padding: 0 20px; }
-  .admin-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-  .admin-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lavender); }
-  .count-badge { font-size: 11px; color: var(--muted); background: var(--surface); border: 1px solid var(--border); padding: 3px 10px; border-radius: 10px; }
-
-  table { width: 100%; border-collapse: collapse; }
-  th { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 10px 13px; border-bottom: 1px solid var(--border); }
-  td { padding: 12px 13px; font-size: 13px; color: rgba(239,239,239,0.55); border-bottom: 1px solid var(--border); }
-  tr:hover td { background: var(--surface); }
-  .no-data { text-align: center; padding: 28px; font-size: 12px; color: var(--muted); }
 
   footer {
     border-top: 1px solid var(--border); padding: 22px 40px;
@@ -188,39 +174,53 @@ const style = `
     .features { flex-direction: column; }
     .feature { border-right: none; border-bottom: 1px solid var(--border); }
     .form-wrap { padding: 0 16px 72px; }
-    .admin-wrap { padding: 0 16px; }
     footer { padding: 18px 20px; flex-direction: column; gap: 4px; }
   }
 `;
+
+const PILLARS = [
+  { label: "Contracts",  title: "Draft & sign deals without a lawyer on speed dial" },
+  { label: "Releases",   title: "Track your catalog, royalties, and distribution" },
+  { label: "Shows",      title: "Manage bookings, advances, and tour routing" },
+  { label: "Invoices",   title: "Pay vendors, track outstanding payments, and settle up fast" },
+  { label: "Projects",   title: "Project boards built for campaigns, releases, and everything in between" },
+];
 
 export default function MenchLanding() {
   const [form, setForm] = useState({ name: "", email: "", phone: "" });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [showAdmin, setShowAdmin] = useState(false);
-  const [signups, setSignups] = useState([]);
-
-  useEffect(() => { loadSignups(); }, []);
-
-  const loadSignups = async () => {
-    const { data } = await supabase.from("beta_signups").select("*").order("created_at", { ascending: false });
-    if (Array.isArray(data)) setSignups(data);
-  };
+  const [error, setError] = useState("");
 
   const handleSubmit = async () => {
-    console.log("submit called", form);
     if (!form.name || !form.email || !form.phone) return;
     setLoading(true);
-    const { error } = await supabase.from("beta_signups").insert({
-      name: form.name, email: form.email, phone: form.phone,
-    });
-    if (error) { alert("Error: " + error.message); }
-    else { setSubmitted(true); loadSignups(); }
+    setError("");
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/beta_signups`, {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": `Bearer ${SUPABASE_KEY}`,
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+        }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || "Something went wrong. Try again.");
+      }
+      setSubmitted(true);
+    } catch (e) {
+      setError(e.message || "Something went wrong. Try again.");
+    }
     setLoading(false);
   };
-
-
-  const fmtDate = (iso) => new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 
   return (
     <>
@@ -242,17 +242,12 @@ export default function MenchLanding() {
               <span className="dim">One place.</span>
             </h1>
             <p className="hero-sub">
-              From split agreements and record deal analysis to streaming data and show routing — everything you need to run your business is in one place. Every artist's team looks different. This is just the tool to run it.
+              From split agreements and record deal analysis to streaming data and show routing. Everything you need to run your business is in one place. Every artist's team looks different. This is just the tool to run it.
             </p>
           </div>
 
           <div className="features">
-            {[
-              { label: "Contracts", title: "Draft & sign deals without a lawyer on speed dial" },
-              { label: "Releases", title: "Track your catalog, royalties, and distribution" },
-              { label: "Shows", title: "Manage bookings, advances, and settlements" },
-              { label: "Strategy", title: "AI-powered insights built for how you move" },
-            ].map(f => (
+            {PILLARS.map(f => (
               <div className="feature" key={f.label}>
                 <div className="feature-label">{f.label}</div>
                 <div className="feature-title">{f.title}</div>
@@ -287,6 +282,7 @@ export default function MenchLanding() {
                     <input type="tel" placeholder="+1 (000) 000-0000" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} />
                     <p className="sms-note"><b>Text only.</b> No spam. We'll reach out when your access is ready.</p>
                   </div>
+                  {error && <p className="error-msg">{error}</p>}
                   <button className="submit-btn" onClick={handleSubmit} disabled={loading || !form.name || !form.email || !form.phone}>
                     {loading ? "Submitting..." : "Request Access"}
                   </button>
@@ -294,31 +290,6 @@ export default function MenchLanding() {
               )}
             </div>
           </div>
-
-          <div className="admin-trigger" onClick={() => setShowAdmin(!showAdmin)}>
-            {showAdmin ? "▲ hide" : "▼ signups"}
-          </div>
-
-          {showAdmin && (
-            <div className="admin-wrap">
-              <div className="admin-bar">
-                <div className="admin-label">Beta Signups</div>
-                <div className="count-badge">{signups.length}</div>
-              </div>
-              {signups.length === 0 ? (
-                <div className="no-data">No signups yet.</div>
-              ) : (
-                <table>
-                  <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Date</th></tr></thead>
-                  <tbody>
-                    {signups.map((s, i) => (
-                      <tr key={i}><td>{s.name}</td><td>{s.email}</td><td>{s.phone}</td><td>{fmtDate(s.ts)}</td></tr>
-                    ))}
-                  </tbody>
-                </table>
-              )}
-            </div>
-          )}
 
           <footer>
             <p>© 2026 Mench</p>
