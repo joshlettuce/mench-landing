@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient("https://xgexwayghogesqhdbzfv.supabase.co", "sb_publishable_R0INuGkKDXGkBLJUR3sKRg_6A7JTPPe");
 
 const style = `
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap');
