@@ -1,3 +1,6 @@
+const SUPABASE_URL = "https://xgexwayghogesqhdbzfv.supabase.co";
+const SUPABASE_KEY = "sb_publishable_R0INuGkKDXGkBLJUR3sKRg_6A7JTPPe";
+
 import { useState, useEffect } from "react";
 
 const style = `
