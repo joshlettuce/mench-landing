@@ -109,6 +109,60 @@ html, body {
   color: rgba(255, 255, 255, 0.5);
 }
 
+/* Invite page */
+
+.invite-card {
+  text-align: center;
+  max-width: 440px;
+  width: 100%;
+}
+
+.invite-loading {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.invite-greeting {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.invite-message {
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 32px;
+}
+
+.invite-message strong {
+  color: #efefef;
+  font-weight: 600;
+}
+
+.invite-btn {
+  display: inline-block;
+  background: #efefef;
+  color: #000;
+  text-decoration: none;
+  padding: 14px 40px;
+  border-radius: 10px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background 0.15s;
+  margin-bottom: 32px;
+}
+
+.invite-btn:hover {
+  background: #d4d0e5;
+}
+
+.invite-footer {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.25);
+}
+
 @media (max-width: 480px) {
   .logo {
     width: 200px;
