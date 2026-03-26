@@ -34,7 +34,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: new URLSearchParams({
-        From: process.env.TWILIO_FROM_NUMBER,
+        MessagingServiceSid: process.env.TWILIO_MESSAGING_SERVICE_SID,
         To: process.env.TWILIO_TO_NUMBER,
         Body: `New Mench signup: ${email}`,
       }),
