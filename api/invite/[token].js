@@ -31,6 +31,9 @@ export default async function handler(req, res) {
     url.searchParams.set("select", "id,token,expires_at,accepted_at,partner:partners(name,role,status,artist:artists(name))");
     url.searchParams.set("token", `eq.${token}`);
 
+    console.log("[invite] Looking up token:", token);
+    console.log("[invite] Supabase URL:", url.toString());
+
     const resp = await fetch(url.toString(), {
       headers: {
         apikey: serviceKey,
@@ -38,13 +41,16 @@ export default async function handler(req, res) {
       },
     });
 
+    const rawBody = await resp.text();
+    console.log("[invite] Supabase status:", resp.status, "body:", rawBody);
+
     if (!resp.ok) {
-      console.error("[invite] Supabase error:", resp.status, await resp.text());
       return res.status(500).json({ error: "Failed to look up invite" });
     }
 
-    const rows = await resp.json();
+    const rows = JSON.parse(rawBody);
     if (!rows.length) {
+      console.log("[invite] No rows found for token:", token);
       return res.status(404).json({ error: "Invalid invite", status: "invalid" });
     }
 
