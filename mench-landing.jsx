@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const style = `
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap');
@@ -50,8 +50,7 @@ const style = `
     position: sticky; top: 0; background: rgba(6,6,6,0.88);
     backdrop-filter: blur(16px); z-index: 10;
   }
-  .logo { font-size: 16px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); }
-  .logo span { color: var(--lavender); }
+  .logo img { height: 24px; width: auto; }
   .nav-pill {
     font-size: 11px; font-weight: 500; color: var(--lavender);
     background: var(--lavender-dim); border: 1px solid rgba(168,158,201,0.15);
@@ -98,39 +97,39 @@ const style = `
   .feature-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
   .feature-title { font-size: 13px; font-weight: 600; color: var(--white); line-height: 1.35; }
 
-  .form-wrap {
-    max-width: 400px; margin: 0 auto; padding: 0 20px 96px;
+  .beta-wrap {
+    max-width: 480px; margin: 0 auto; padding: 0 20px 96px;
     animation: fadeUp 0.45s 0.14s ease both;
   }
-  .form-heading { text-align: center; margin-bottom: 24px; }
-  .form-heading h2 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 5px; }
-  .form-heading p { font-size: 13px; color: var(--white-dim); }
+  .beta-heading {
+    text-align: center; margin-bottom: 24px;
+  }
+  .beta-heading h2 {
+    font-size: 19px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 5px;
+  }
+  .beta-heading p { font-size: 13px; color: var(--white-dim); }
 
-  .form-box {
+  .beta-box {
     background: var(--surface); border: 1px solid var(--border2);
     border-radius: 14px; padding: 26px; position: relative; overflow: hidden;
   }
-  .form-box::after {
+  .beta-box::after {
     content: ''; position: absolute; top: 0; left: 25%; right: 25%; height: 1px;
     background: linear-gradient(90deg, transparent, var(--lavender-glow), transparent);
   }
 
-  .field { margin-bottom: 13px; }
-  .field label { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
-  .field input {
+  .beta-input {
     width: 100%; background: var(--surface2); border: 1px solid var(--border);
     border-radius: 8px; padding: 11px 13px; color: var(--white);
     font-family: var(--font); font-size: 14px; font-weight: 400; outline: none;
     transition: border-color 0.15s, box-shadow 0.15s;
+    margin-bottom: 13px;
   }
-  .field input:focus { border-color: rgba(168,158,201,0.4); box-shadow: 0 0 0 3px var(--lavender-dim); }
-  .field input::placeholder { color: var(--muted); }
-
-  .sms-note { font-size: 11px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
-  .sms-note b { color: var(--lavender); font-weight: 500; }
+  .beta-input:focus { border-color: rgba(168,158,201,0.4); box-shadow: 0 0 0 3px var(--lavender-dim); }
+  .beta-input::placeholder { color: var(--muted); }
 
   .submit-btn {
-    width: 100%; margin-top: 18px; padding: 13px;
+    width: 100%; padding: 13px;
     background: var(--white); color: var(--black);
     border: none; border-radius: 8px; cursor: pointer;
     font-family: var(--font); font-weight: 700; font-size: 13px;
@@ -150,24 +149,6 @@ const style = `
   .success h3 { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
   .success p { font-size: 12px; color: var(--muted); }
 
-  .admin-trigger {
-    text-align: center; padding-bottom: 28px;
-    font-size: 11px; color: var(--border2); cursor: pointer;
-    transition: color 0.2s; letter-spacing: 0.04em;
-  }
-  .admin-trigger:hover { color: var(--muted); }
-
-  .admin-wrap { max-width: 720px; margin: 0 auto 72px; padding: 0 20px; }
-  .admin-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-  .admin-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lavender); }
-  .count-badge { font-size: 11px; color: var(--muted); background: var(--surface); border: 1px solid var(--border); padding: 3px 10px; border-radius: 10px; }
-
-  table { width: 100%; border-collapse: collapse; }
-  th { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 10px 13px; border-bottom: 1px solid var(--border); }
-  td { padding: 12px 13px; font-size: 13px; color: rgba(239,239,239,0.55); border-bottom: 1px solid var(--border); }
-  tr:hover td { background: var(--surface); }
-  .no-data { text-align: center; padding: 28px; font-size: 12px; color: var(--muted); }
-
   footer {
     border-top: 1px solid var(--border); padding: 22px 40px;
     display: flex; align-items: center; justify-content: space-between;
@@ -184,42 +165,20 @@ const style = `
     .hero { padding: 64px 20px 52px; }
     .features { flex-direction: column; }
     .feature { border-right: none; border-bottom: 1px solid var(--border); }
-    .form-wrap { padding: 0 16px 72px; }
-    .admin-wrap { padding: 0 16px; }
+    .beta-wrap { padding: 0 16px 72px; }
     footer { padding: 18px 20px; flex-direction: column; gap: 4px; }
   }
 `;
 
 export default function MenchLanding() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "" });
+  const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [showAdmin, setShowAdmin] = useState(false);
-  const [signups, setSignups] = useState([]);
 
-  useEffect(() => { loadSignups(); }, []);
-
-  const loadSignups = async () => {
-    try {
-      const r = await window.storage.get("mench-beta-signups");
-      if (r) setSignups(JSON.parse(r.value));
-    } catch {}
+  const handleSubmit = () => {
+    if (!email) return;
+    console.log("Beta signup email:", email);
+    setSubmitted(true);
   };
-
-  const handleSubmit = async () => {
-    if (!form.name || !form.email || !form.phone) return;
-    setLoading(true);
-    try {
-      const entry = { ...form, ts: new Date().toISOString() };
-      const updated = [...signups, entry];
-      await window.storage.set("mench-beta-signups", JSON.stringify(updated));
-      setSignups(updated);
-      setSubmitted(true);
-    } catch {}
-    setLoading(false);
-  };
-
-  const fmtDate = (iso) => new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 
   return (
     <>
@@ -229,7 +188,7 @@ export default function MenchLanding() {
         <div className="bg-orb" />
         <div className="content">
           <nav>
-            <div className="logo">MEN<span>CH</span></div>
+            <div className="logo"><img src="/mench_logo_transparent.png" alt="Mench" /></div>
             <div className="nav-pill">Closed Beta</div>
           </nav>
 
@@ -259,65 +218,38 @@ export default function MenchLanding() {
             ))}
           </div>
 
-          <div className="form-wrap">
-            <div className="form-heading">
-              <h2>Request access</h2>
-              <p>Limited beta spots. We'll text you when you're in.</p>
+          <div className="beta-wrap">
+            <div className="beta-heading">
+              <h2>Join the Beta</h2>
+              <p>Limited spots. Drop your email and we'll reach out.</p>
             </div>
-            <div className="form-box">
+            <div className="beta-box">
               {submitted ? (
                 <div className="success">
                   <div className="success-check">✓</div>
                   <h3>You're on the list.</h3>
-                  <p>We'll hit your phone when your spot opens up.</p>
+                  <p>We'll be in touch when your spot opens up.</p>
                 </div>
               ) : (
                 <>
-                  <div className="field">
-                    <label>Name</label>
-                    <input type="text" placeholder="Your name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
-                  </div>
-                  <div className="field">
-                    <label>Email</label>
-                    <input type="email" placeholder="you@email.com" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
-                  </div>
-                  <div className="field">
-                    <label>Phone</label>
-                    <input type="tel" placeholder="+1 (000) 000-0000" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} />
-                    <p className="sms-note"><b>Text only.</b> No spam. We'll reach out when your access is ready.</p>
-                  </div>
-                  <button className="submit-btn" onClick={handleSubmit} disabled={loading || !form.name || !form.email || !form.phone}>
-                    {loading ? "Submitting..." : "Request Access"}
+                  <input
+                    className="beta-input"
+                    type="email"
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                  />
+                  <button
+                    className="submit-btn"
+                    onClick={handleSubmit}
+                    disabled={!email}
+                  >
+                    Request Access
                   </button>
                 </>
               )}
             </div>
           </div>
-
-          <div className="admin-trigger" onClick={() => setShowAdmin(!showAdmin)}>
-            {showAdmin ? "▲ hide" : "▼ signups"}
-          </div>
-
-          {showAdmin && (
-            <div className="admin-wrap">
-              <div className="admin-bar">
-                <div className="admin-label">Beta Signups</div>
-                <div className="count-badge">{signups.length}</div>
-              </div>
-              {signups.length === 0 ? (
-                <div className="no-data">No signups yet.</div>
-              ) : (
-                <table>
-                  <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Date</th></tr></thead>
-                  <tbody>
-                    {signups.map((s, i) => (
-                      <tr key={i}><td>{s.name}</td><td>{s.email}</td><td>{s.phone}</td><td>{fmtDate(s.ts)}</td></tr>
-                    ))}
-                  </tbody>
-                </table>
-              )}
-            </div>
-          )}
 
           <footer>
             <p>© 2026 Mench</p>

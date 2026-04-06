@@ -1,30 +1,53 @@
+import { useState } from "react";
 import "./LandingPage.css";
-
-const APP_STORE_URL = "#";
 
 function Nav() {
   return (
     <nav className="nav">
-      <span className="nav-logo">MENCH</span>
-      <a href={APP_STORE_URL} className="btn-outline">
-        Download on App Store
-      </a>
+      <img src="/mench_logo_transparent.png" alt="Mench" className="nav-logo" />
     </nav>
   );
 }
 
 function Hero() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!email) return;
+    console.log("Beta signup email:", email);
+    setSubmitted(true);
+  };
+
   return (
     <section className="hero">
       <h1 className="hero-headline">
-        The back office every independent artist deserves.
+        The back office for the independent artist
       </h1>
       <p className="hero-sub">
-        Contracts. Payments. Distribution. Content. All in one app.
+        Contracts, Escrow Payments, Seeding &amp; Tour Strategy
       </p>
-      <a href={APP_STORE_URL} className="btn-primary">
-        Download on App Store
-      </a>
+      {submitted ? (
+        <p className="beta-thanks">You're on the list.</p>
+      ) : (
+        <form className="beta-form" onSubmit={handleSubmit}>
+          <p className="beta-heading">Join the Beta</p>
+          <div className="beta-row">
+            <input
+              type="email"
+              className="beta-input"
+              placeholder="your@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <button type="submit" className="btn-primary">
+              Request Access
+            </button>
+          </div>
+        </form>
+      )}
     </section>
   );
 }
@@ -128,13 +151,6 @@ function Pricing() {
                 </li>
               ))}
             </ul>
-            <a
-              href={APP_STORE_URL}
-              className={tier.highlight ? "btn-primary" : "btn-outline"}
-              style={{ display: "block", textAlign: "center" }}
-            >
-              Get started
-            </a>
           </div>
         ))}
       </div>
