@@ -174,9 +174,14 @@ export default function MenchLanding() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!email) return;
-    console.log("Beta signup email:", email);
+    const { createClient } = await import('@supabase/supabase-js');
+    const supabase = createClient(
+      import.meta.env.VITE_SUPABASE_URL,
+      import.meta.env.VITE_SUPABASE_ANON_KEY
+    );
+    await supabase.from('beta_signups').insert({ email });
     setSubmitted(true);
   };
 
