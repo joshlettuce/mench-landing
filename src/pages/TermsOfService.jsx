@@ -62,7 +62,7 @@ export default function TermsOfService() {
       <p>Mench may update these terms at any time. Material changes will be communicated via email or in-app notification. Continued use of Mench after changes take effect constitutes acceptance.</p>
 
       <h2 style={h2Style}>15. Contact</h2>
-      <p>PRNTS LLC / legal@mench.app / Los Angeles, CA</p>
+      <p>Mench Technologies, Inc. / legal@mench.app / Inglewood, CA 90302</p>
     </div>
   );
 }

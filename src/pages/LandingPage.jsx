@@ -209,7 +209,7 @@ function Footer() {
         <span className="footer-divider">·</span>
         <a href="mailto:support@mench.app" className="footer-link">support@mench.app</a>
       </div>
-      <p className="footer-copy">© 2026 PRNTS LLC. All rights reserved.</p>
+      <p className="footer-copy">© 2026 Mench Technologies, Inc.. All rights reserved.</p>
     </footer>
   );
 }

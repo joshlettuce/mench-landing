@@ -20,7 +20,7 @@ export default function PrivacyPolicy() {
       <p><em style={subtitleStyle}>Last updated: March 30, 2026</em></p>
 
       <h2 style={h2Style}>1. Who We Are</h2>
-      <p>Mench is a product of PRNTS LLC. We operate the Mench mobile application and website at mench.app. References to "Mench," "we," "us," or "our" refer to PRNTS LLC.</p>
+      <p>Mench is a product of Mench Technologies, Inc.. We operate the Mench mobile application and website at mench.app. References to "Mench," "we," "us," or "our" refer to Mench Technologies, Inc..</p>
 
       <h2 style={h2Style}>2. What We Collect</h2>
       <p>We collect information you provide directly, including your name, email address, phone number, and business information when you create an account. We collect financial information including bank account details, payment card information, and transaction history when you use our payments features. We collect identity verification information including government-issued ID and tax identification numbers as required by law and by our payment processors. We collect usage data including how you interact with the app, voice session metadata, and device information. We do not store the content of your voice conversations beyond what is necessary to deliver the service.</p>
@@ -47,7 +47,7 @@ export default function PrivacyPolicy() {
       <p>We will notify you of material changes to this policy via email or in-app notification. Continued use of Mench after changes take effect constitutes acceptance of the updated policy.</p>
 
       <h2 style={h2Style}>10. Contact</h2>
-      <p>PRNTS LLC / privacy@mench.app / Los Angeles, CA</p>
+      <p>Mench Technologies, Inc. / privacy@mench.app / Inglewood, CA 90302</p>
     </div>
   );
 }
