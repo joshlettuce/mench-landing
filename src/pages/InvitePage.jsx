@@ -95,7 +95,7 @@ export default function InvitePage() {
       <div className="invite-card">
         <p className="invite-message">
           {state === "expired"
-            ? "This invite link has expired. Ask your artist to send a new one."
+            ? "This invite link has expired. Ask your creator to send a new one."
             : "This invite link is no longer valid."}
         </p>
       </div>
