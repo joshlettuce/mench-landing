@@ -31,7 +31,7 @@ function Hero() {
         The back office for the independent artist
       </h1>
       <p className="hero-sub">
-        Contracts, Escrow Payments, Seeding &amp; Tour Strategy
+        Contracts &amp; Escrow Payments
       </p>
       {submitted ? (
         <p className="beta-thanks">You're on the list.</p>
@@ -60,19 +60,11 @@ function Hero() {
 const FEATURES = [
   {
     title: "Contracts",
-    desc: "Generate and e-sign deals instantly. NDAs, producer agreements, booking contracts — drafted by AI in seconds.",
+    desc: "Draft and e-sign deals in minutes — NDAs, producer agreements, booking deals.",
   },
   {
     title: "Escrow Payments",
-    desc: "Hold funds until work is delivered. Both parties sign, then Mench releases payment automatically.",
-  },
-  {
-    title: "Tour Strategy",
-    desc: "Manage shows, routing, and offers in one place. Evaluate deals, track guarantees, plan your routing.",
-  },
-  {
-    title: "Content Seeding",
-    desc: "Get your music in front of real audiences organically. Schedule drops, track placements, own your reach.",
+    desc: "Hold funds until the work is delivered, then release payment.",
   },
 ];
 
@@ -92,92 +84,16 @@ function Features() {
   );
 }
 
-const TIERS = [
-  {
-    name: "Free",
-    price: "$0",
-    period: "",
-    highlight: false,
-    features: [
-      "25 AI messages / month",
-      "Contracts & e-signing",
-      "Show pipeline",
-      "Basic analytics",
-    ],
-  },
-  {
-    name: "Pro",
-    price: "$79",
-    period: "/mo",
-    highlight: true,
-    features: [
-      "1,000 AI messages / month",
-      "Escrow payments",
-      "Tour routing & offers",
-      "Content scheduling & seeding",
-    ],
-  },
-  {
-    name: "Label",
-    price: "$199",
-    period: "/mo",
-    highlight: false,
-    features: [
-      "5,000 AI messages / month",
-      "Multi-artist management",
-      "Partner & team access",
-      "Priority support",
-    ],
-  },
-];
-
-function Pricing() {
-  return (
-    <section className="section pricing-section">
-      <h2 className="section-title">Simple pricing.</h2>
-      <p className="section-sub">No hidden fees. Cancel anytime.</p>
-      <div className="pricing-grid">
-        {TIERS.map((tier) => (
-          <div
-            key={tier.name}
-            className={`pricing-card${tier.highlight ? " pricing-card--highlight" : ""}`}
-          >
-            {tier.highlight && <div className="pricing-badge">Most Popular</div>}
-            <div className="pricing-name">{tier.name}</div>
-            <div className="pricing-price">
-              {tier.price}
-              {tier.period && <span className="pricing-period">{tier.period}</span>}
-            </div>
-            <ul className="pricing-features">
-              {tier.features.map((f) => (
-                <li key={f} className="pricing-feature">
-                  <span className="pricing-check">✓</span>
-                  {f}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 const STEPS = [
   {
     num: "01",
-    title: "Add your artist profile",
-    desc: "Tell Mench about your music, your goals, and your team in minutes.",
+    title: "Set your deal terms",
+    desc: "Draft and e-sign contracts — NDAs, producer agreements, booking deals.",
   },
   {
     num: "02",
-    title: "Talk to your manager",
-    desc: "Chat with your AI manager to draft contracts, plan tours, or handle payments.",
-  },
-  {
-    num: "03",
-    title: "Mench handles the rest",
-    desc: "Execution happens in the app — signed, paid, scheduled, and tracked.",
+    title: "Get paid safely",
+    desc: "Funds are held in escrow until the work is delivered, then released.",
   },
 ];
 
@@ -209,6 +125,7 @@ function Footer() {
         <span className="footer-divider">·</span>
         <a href="mailto:support@mench.app" className="footer-link">support@mench.app</a>
       </div>
+      <p className="footer-disclaimer">Mench provides self-service tools, not legal advice.</p>
       <p className="footer-copy">© 2026 Mench Technologies, Inc.. All rights reserved.</p>
     </footer>
   );
@@ -221,7 +138,6 @@ export default function LandingPage() {
       <main>
         <Hero />
         <Features />
-        <Pricing />
         <HowItWorks />
       </main>
       <Footer />
