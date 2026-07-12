@@ -28,7 +28,7 @@ function Hero() {
   return (
     <section className="hero">
       <h1 className="hero-headline">
-        The back office for the independent artist
+        The back office for the independent creator
       </h1>
       <p className="hero-sub">
         Contracts &amp; Escrow Payments
