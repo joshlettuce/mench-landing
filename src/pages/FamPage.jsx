@@ -23,7 +23,7 @@ const AUDIENCES = [
 ];
 
 const STEPS = [
-  { num: "01", title: "Agree", body: "Describe the deal. Mench drafts it from attorney-reviewed templates." },
+  { num: "01", title: "Agree", body: "Describe the deal in plain English. Mench's AI drafts a clear contract with the terms that matter." },
   { num: "02", title: "Sign", body: "Both sides sign in the app. Legally binding." },
   { num: "03", title: "Hold", body: "The payment sits in escrow, so you know the money is there." },
   { num: "04", title: "Release", body: "Work delivered, money released. Or just send an invoice." },
@@ -175,17 +175,17 @@ export default function FamPage() {
               <div className="fam-faq-item">
                 <h3 className="fam-faq-q fam-mono">Why can't I just use ChatGPT or Claude to do this?</h3>
                 <p>
-                  An AI chatbot can write you a document, but it can't get the other side to sign it, hold the money,
-                  or release it when the work is done. Mench handles the whole deal: terms from attorney-reviewed
-                  templates, legally binding signatures from both parties, and the payment in escrow until delivery.
+                  A chatbot can draft a document, but that's where it stops. Mench uses AI to draft the contract inside
+                  the deal itself: both sides review and sign in the app, the payment is held in escrow, and it's
+                  released when the work is done. It's the whole deal, not just the paperwork.
                 </p>
               </div>
               <div className="fam-faq-item">
                 <h3 className="fam-faq-q fam-mono">Are these legal contracts?</h3>
                 <p>
-                  Yes. Contracts start from attorney-reviewed templates, and signatures comply with the federal ESIGN
-                  Act and UETA, with a full audit trail and a signed PDF for both sides. For a very large or unusual
-                  deal, it's still smart to have your own lawyer take a look.
+                  Both sides agree to the terms and sign, and Mench's e-signatures meet the federal ESIGN Act and UETA,
+                  with a full audit trail and a signed PDF for each party. Mench drafts contracts with AI and isn't a
+                  law firm, so for a large or unusual deal, have your own lawyer take a look.
                 </p>
               </div>
               <div className="fam-faq-item">
