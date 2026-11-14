@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./FamPage.css";
 
 const SHARE_MESSAGE =
-  "Check out Mench, an app that just launched. It protects your deals so you actually get paid: contract, e-signature, and the money held in escrow until the work's done. Free to start. Search ‘Mench’ on the App Store or go to mench.app.";
+  "Check out Mench, an app that just launched. It protects your deals so you actually get paid: contract, e-signature, and the money held with Mench's SafePay technology until the work's done. Free to start. Search ‘Mench’ on the App Store or go to mench.app.";
 
 const AUDIENCES = [
   {
@@ -25,7 +25,7 @@ const AUDIENCES = [
 const STEPS = [
   { num: "01", title: "Agree", body: "Describe the deal in plain English. Mench's AI drafts a clear contract with the terms that matter." },
   { num: "02", title: "Sign", body: "Both sides sign in the app. Legally binding." },
-  { num: "03", title: "Hold", body: "The payment sits in escrow, so you know the money is there." },
+  { num: "03", title: "Hold", body: "The payment is held with our SafePay technology, so you know the money is there." },
   { num: "04", title: "Release", body: "Work delivered, money released. Or just send an invoice." },
 ];
 
@@ -107,7 +107,7 @@ export default function FamPage() {
               </li>
               <li>
                 <span>Payment</span>
-                <span className="fam-deal-held fam-mono">HELD IN ESCROW</span>
+                <span className="fam-deal-held fam-mono">HELD IN SAFEPAY</span>
               </li>
               <li>
                 <span>Release</span>
@@ -176,7 +176,7 @@ export default function FamPage() {
                 <h3 className="fam-faq-q fam-mono">Why can't I just use ChatGPT or Claude to do this?</h3>
                 <p>
                   A chatbot can draft a document, but that's where it stops. Mench uses AI to draft the contract inside
-                  the deal itself: both sides review and sign in the app, the payment is held in escrow, and it's
+                  the deal itself: both sides review and sign in the app, the payment is held with our SafePay technology, and it's
                   released when the work is done. It's the whole deal, not just the paperwork.
                 </p>
               </div>
@@ -191,8 +191,8 @@ export default function FamPage() {
               <div className="fam-faq-item">
                 <h3 className="fam-faq-q fam-mono">What happens if someone doesn't pay?</h3>
                 <p>
-                  With escrow, the client pays up front and Mench holds the money, so it's already there before the
-                  work starts. It's released when the work is delivered. If you send a plain invoice instead, you still
+                  With our SafePay technology, the client pays up front and the money is held securely, so it's
+                  already there before the work starts. It's released when the work is delivered. If you send a plain invoice instead, you still
                   have a signed contract and a clear record of the deal to point to.
                 </p>
               </div>
@@ -203,7 +203,7 @@ export default function FamPage() {
               <div className="fam-faq-item">
                 <h3 className="fam-faq-q fam-mono">What does it cost?</h3>
                 <p>
-                  Free to start. Pro is $19/mo. Escrow is 2.5%, paid by whoever receives the money.{" "}
+                  Free to start. Pro is $19/mo. Our SafePay technology is 2.5%, paid by whoever receives the money.{" "}
                   <span className="fam-highlight">
                     But for our friends and family, the monthly cost will always be FREE.
                   </span>
