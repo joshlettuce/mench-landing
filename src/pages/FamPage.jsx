@@ -165,56 +165,56 @@ export default function FamPage() {
             <p className="fam-eyebrow fam-mono">QUICK FAQ</p>
             <h2 className="fam-h2 fam-mono">The two-minute version.</h2>
             <div className="fam-faq">
-              <details className="fam-faq-item" open>
-                <summary className="fam-mono">Why does it matter?</summary>
+              <div className="fam-faq-item">
+                <h3 className="fam-faq-q fam-mono">Why does it matter?</h3>
                 <p>
                   Most deals happen over texts, DMs and Cash App with no contract and no recourse. Lawyers are too
                   expensive for everyday jobs, so most people just hope it works out.
                 </p>
-              </details>
-              <details className="fam-faq-item">
-                <summary className="fam-mono">Why can't I just use ChatGPT or Claude to do this?</summary>
+              </div>
+              <div className="fam-faq-item">
+                <h3 className="fam-faq-q fam-mono">Why can't I just use ChatGPT or Claude to do this?</h3>
                 <p>
                   An AI chatbot can write you a document, but it can't get the other side to sign it, hold the money,
                   or release it when the work is done. Mench handles the whole deal: terms from attorney-reviewed
                   templates, legally binding signatures from both parties, and the payment in escrow until delivery.
                 </p>
-              </details>
-              <details className="fam-faq-item">
-                <summary className="fam-mono">Are these legal contracts?</summary>
+              </div>
+              <div className="fam-faq-item">
+                <h3 className="fam-faq-q fam-mono">Are these legal contracts?</h3>
                 <p>
                   Yes. Contracts start from attorney-reviewed templates, and signatures comply with the federal ESIGN
                   Act and UETA, with a full audit trail and a signed PDF for both sides. For a very large or unusual
                   deal, it's still smart to have your own lawyer take a look.
                 </p>
-              </details>
-              <details className="fam-faq-item">
-                <summary className="fam-mono">What happens if someone doesn't pay?</summary>
+              </div>
+              <div className="fam-faq-item">
+                <h3 className="fam-faq-q fam-mono">What happens if someone doesn't pay?</h3>
                 <p>
                   With escrow, the client pays up front and Mench holds the money, so it's already there before the
                   work starts. It's released when the work is delivered. If you send a plain invoice instead, you still
                   have a signed contract and a clear record of the deal to point to.
                 </p>
-              </details>
-              <details className="fam-faq-item">
-                <summary className="fam-mono">Is the money safe?</summary>
+              </div>
+              <div className="fam-faq-item">
+                <h3 className="fam-faq-q fam-mono">Is the money safe?</h3>
                 <p>Payments run through Stripe, the same payments company behind Shopify, Amazon and Lyft.</p>
-              </details>
-              <details className="fam-faq-item">
-                <summary className="fam-mono">What does it cost?</summary>
+              </div>
+              <div className="fam-faq-item">
+                <h3 className="fam-faq-q fam-mono">What does it cost?</h3>
                 <p>
                   Free to start. Pro is $19/mo. Escrow is 2.5%, paid by whoever receives the money.{" "}
                   <span className="fam-highlight">
                     But for our friends and family, the monthly cost will always be FREE.
                   </span>
                 </p>
-              </details>
-              <details className="fam-faq-item">
-                <summary className="fam-mono">How do I get it?</summary>
+              </div>
+              <div className="fam-faq-item">
+                <h3 className="fam-faq-q fam-mono">How do I get it?</h3>
                 <p>
                   Search &ldquo;Mench&rdquo; on the App Store, or go to <a href="https://mench.app">mench.app</a>.
                 </p>
-              </details>
+              </div>
             </div>
           </div>
         </section>
