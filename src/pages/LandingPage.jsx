@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./LandingPage.css";
 
 // ⬇️ Mench's App Store listing. Change it here and every badge on the page updates.
-const APP_STORE_URL = "https://apps.apple.com/us/app/REPLACE_WITH_MENCH_APP_ID";
+const APP_STORE_URL = "https://apps.apple.com/us/app/mench-hq/id6760744751";
 
 function AppleLogo() {
   return (
