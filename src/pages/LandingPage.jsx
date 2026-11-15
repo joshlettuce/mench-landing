@@ -62,10 +62,11 @@ function Hero() {
   return (
     <section className="hero">
       <h1 className="hero-headline">
-        The back office for the independent creator
+        Mench protects the handshake deal.
       </h1>
       <p className="hero-sub">
-        Contracts &amp; Escrow Payments
+        AI-drafted contracts, in-app signatures, and SafePay so the money's
+        there before the work starts.
       </p>
       <div className="hero-download">
         <AppStoreBadge size="lg" />
@@ -97,19 +98,30 @@ function Hero() {
 
 const FEATURES = [
   {
-    title: "Contracts",
-    desc: "Draft and e-sign deals in minutes — NDAs, producer agreements, booking deals.",
+    title: "AI-drafted contracts",
+    desc: "Describe the deal in plain English. Mench's AI drafts the contract.",
   },
   {
-    title: "Escrow Payments",
-    desc: "Hold funds until the work is delivered, then release payment.",
+    title: "In-app signatures",
+    desc: "Both sides sign right in the app. No printing, no chasing.",
+  },
+  {
+    title: "SafePay",
+    desc: "Our SafePay technology holds the payment until the work is done.",
   },
 ];
 
 function Features() {
   return (
     <section className="section features-section">
-      <h2 className="section-title">Everything your team does — in one app.</h2>
+      <h2 className="section-title">Make the handshake deal a little safer.</h2>
+      <p className="section-sub section-lede">
+        Mench makes the handshake deal feel a little safer. Small businesses,
+        creators, freelancers and athletes describe a deal in plain English,
+        Mench's AI drafts the contract, both sides sign in the app, and our
+        SafePay technology holds the payment until the work is done, so
+        everyone gets what they agreed to.
+      </p>
       <div className="features-grid">
         {FEATURES.map((f) => (
           <div key={f.title} className="feature-card">
@@ -125,13 +137,18 @@ function Features() {
 const STEPS = [
   {
     num: "01",
-    title: "Set your deal terms",
-    desc: "Draft and e-sign contracts — NDAs, producer agreements, booking deals.",
+    title: "Describe the deal",
+    desc: "Tell Mench the terms in plain English. The AI drafts the contract.",
   },
   {
     num: "02",
-    title: "Get paid safely",
-    desc: "Funds are held in escrow until the work is delivered, then released.",
+    title: "Both sides sign",
+    desc: "Everyone signs in the app, so the agreement is locked in.",
+  },
+  {
+    num: "03",
+    title: "SafePay holds the money",
+    desc: "Payment is held until the work is done, then released.",
   },
 ];
 

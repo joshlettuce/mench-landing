@@ -119,12 +119,18 @@
 /* ─── Features ──────────────────────────────────────────────── */
 
 .features-section .section-title {
+  margin-bottom: 16px;
+}
+
+.section-lede {
+  max-width: 720px;
+  line-height: 1.6;
   margin-bottom: 48px;
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -380,6 +386,8 @@
 }
 
 @media (max-width: 480px) {
+  .beta-row { flex-direction: column; }
+
   .nav-logo {
     font-size: 15px;
     letter-spacing: 3px;
