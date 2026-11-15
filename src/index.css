@@ -24,7 +24,8 @@ html, body {
 }
 
 .logo {
-  font-size: 72px;
+  width: 280px;
+  height: auto;
 }
 
 .form-wrap {
@@ -175,15 +176,4 @@ html, body {
   .input-row button {
     border-radius: 0;
   }
-}
-
-/* ─── Mench wordmark ────────────────────────────────────────── */
-.mench-wordmark {
-  display: inline-block;
-  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 1;
-  color: #fff;
-  white-space: nowrap;
 }
