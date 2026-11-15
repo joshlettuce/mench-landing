@@ -46,6 +46,16 @@
 
 .btn-outline:hover { border-color: rgba(255, 255, 255, 0.6); }
 
+/* ─── Inline MΞNCH logo ────────────────────────────────────── */
+
+.mench-inline {
+  display: inline-block;
+  height: 0.72em;      /* matches cap height */
+  width: auto;
+  vertical-align: baseline;
+  margin: 0 0.04em;
+}
+
 /* ─── Nav ───────────────────────────────────────────────────── */
 
 .nav {

@@ -4,6 +4,11 @@ import "./LandingPage.css";
 // ⬇️ Mench's App Store listing. Change it here and every badge on the page updates.
 const APP_STORE_URL = "https://apps.apple.com/us/app/mench-hq/id6760744751";
 
+// The MΞNCH logo, sized to sit inline with text. Use it anywhere the name appears.
+function M() {
+  return <img src="/mench_logo_inline.png" alt="Mench" className="mench-inline" />;
+}
+
 function AppleLogo() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className="appstore-logo">
@@ -62,7 +67,7 @@ function Hero() {
   return (
     <section className="hero">
       <h1 className="hero-headline">
-        Mench protects the handshake deal.
+        <M /> protects the handshake deal.
       </h1>
       <p className="hero-sub">
         AI-drafted contracts, in-app signatures, and SafePay so the money's
@@ -99,7 +104,7 @@ function Hero() {
 const FEATURES = [
   {
     title: "AI-drafted contracts",
-    desc: "Describe the deal in plain English. Mench's AI drafts the contract.",
+    desc: <>Describe the deal in plain English. <M />'s AI drafts the contract.</>,
   },
   {
     title: "In-app signatures",
@@ -116,9 +121,9 @@ function Features() {
     <section className="section features-section">
       <h2 className="section-title">Make the handshake deal a little safer.</h2>
       <p className="section-sub section-lede">
-        Mench makes the handshake deal feel a little safer. Small businesses,
+        <M /> makes the handshake deal feel a little safer. Small businesses,
         creators, freelancers and athletes describe a deal in plain English,
-        Mench's AI drafts the contract, both sides sign in the app, and our
+        {" "}<M />'s AI drafts the contract, both sides sign in the app, and our
         SafePay technology holds the payment until the work is done, so
         everyone gets what they agreed to.
       </p>
@@ -138,7 +143,7 @@ const STEPS = [
   {
     num: "01",
     title: "Describe the deal",
-    desc: "Tell Mench the terms in plain English. The AI drafts the contract.",
+    desc: <>Tell <M /> the terms in plain English. The AI drafts the contract.</>,
   },
   {
     num: "02",
@@ -173,7 +178,7 @@ function HowItWorks() {
 function DownloadCTA() {
   return (
     <section className="section download-section">
-      <h2 className="section-title">Get Mench on your iPhone.</h2>
+      <h2 className="section-title">Get <M /> on your iPhone.</h2>
       <p className="section-sub">Free to download.</p>
       <AppStoreBadge size="lg" />
     </section>
@@ -190,7 +195,7 @@ function Footer() {
         <span className="footer-divider">·</span>
         <a href="mailto:support@mench.app" className="footer-link">support@mench.app</a>
       </div>
-      <p className="footer-disclaimer">Mench provides self-service tools, not legal advice.</p>
+      <p className="footer-disclaimer"><M /> provides self-service tools, not legal advice.</p>
       <p className="footer-copy">© 2026 Mench Technologies, Inc.. All rights reserved.</p>
     </footer>
   );
