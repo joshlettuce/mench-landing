@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Wordmark from "../components/Wordmark.jsx";
 
 export default function InvitePage() {
   const { token } = useParams();
@@ -30,7 +31,7 @@ export default function InvitePage() {
     return (
       <div className="page">
         <div className="logo-wrap">
-          <img src="/transparentlogo.png" alt="Mench" className="logo" />
+          <Wordmark className="logo" />
         </div>
         <div className="invite-card">
           <p className="invite-loading">Loading invite...</p>
@@ -43,7 +44,7 @@ export default function InvitePage() {
     return (
       <div className="page">
         <div className="logo-wrap">
-          <img src="/transparentlogo.png" alt="Mench" className="logo" />
+          <Wordmark className="logo" />
         </div>
         <div className="invite-card">
           <p className="invite-greeting">Hi {invite.partnerName},</p>
@@ -70,7 +71,7 @@ export default function InvitePage() {
     return (
       <div className="page">
         <div className="logo-wrap">
-          <img src="/transparentlogo.png" alt="Mench" className="logo" />
+          <Wordmark className="logo" />
         </div>
         <div className="invite-card">
           <div className="check">&#10003;</div>
@@ -90,7 +91,7 @@ export default function InvitePage() {
   return (
     <div className="page">
       <div className="logo-wrap">
-        <img src="/transparentlogo.png" alt="Mench" className="logo" />
+        <Wordmark className="logo" />
       </div>
       <div className="invite-card">
         <p className="invite-message">

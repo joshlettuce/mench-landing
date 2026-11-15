@@ -62,9 +62,10 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+.nav-home { text-decoration: none; }
+
 .nav-logo {
-  height: 28px;
-  width: auto;
+  font-size: 30px;
 }
 
 /* ─── Sections ──────────────────────────────────────────────── */
@@ -389,8 +390,7 @@
   .beta-row { flex-direction: column; }
 
   .nav-logo {
-    font-size: 15px;
-    letter-spacing: 3px;
+    font-size: 26px;
   }
 
   .btn-outline {

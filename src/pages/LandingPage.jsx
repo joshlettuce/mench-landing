@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./LandingPage.css";
+import Wordmark from "../components/Wordmark.jsx";
 
 // ⬇️ Mench's App Store listing. Change it here and every badge on the page updates.
 const APP_STORE_URL = "https://apps.apple.com/us/app/mench-hq/id6760744751";
@@ -37,7 +38,7 @@ function AppStoreBadge({ size = "lg", variant = "light" }) {
 function Nav() {
   return (
     <nav className="nav">
-      <img src="/mench_logo_transparent.png" alt="Mench" className="nav-logo" />
+      <a href="/" className="nav-home"><Wordmark className="nav-logo" /></a>
       <AppStoreBadge size="sm" variant="dark" />
     </nav>
   );
