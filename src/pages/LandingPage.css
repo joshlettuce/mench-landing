@@ -334,12 +334,18 @@
 .appstore-badge--sm .appstore-small { font-size: 9px; }
 .appstore-badge--sm .appstore-big   { font-size: 16px; }
 
+.playstore-logo { margin-top: 0; }
+
+.store-badges { display: inline-flex; align-items: center; flex-wrap: wrap; }
+.store-badges--lg { gap: 14px; }
+.store-badges--sm { gap: 8px; }
+.download-section .store-badges { justify-content: center; }
+
 .hero-download {
   display: flex;
   align-items: center;
   gap: 18px;
   flex-wrap: wrap;
-  margin-bottom: 48px;
 }
 
 .hero-download-note {
@@ -395,8 +401,19 @@
   }
 }
 
+@media (max-width: 600px) {
+  /* Nav: icon-only store buttons so both fit beside the logo */
+  .nav .appstore-text { display: none; }
+  .nav .appstore-badge--sm { padding: 8px 10px; gap: 0; }
+  .nav .appstore-badge--sm .appstore-logo { margin-top: 0; }
+  .nav .appstore-badge--sm .appstore-logo:not(.playstore-logo) { margin-top: -2px; }
+}
+
 @media (max-width: 480px) {
   .beta-row { flex-direction: column; }
+
+  /* Stacked store badges share one width */
+  .store-badges--lg { flex-direction: column; align-items: stretch; }
 
   .nav-logo {
     font-size: 15px;

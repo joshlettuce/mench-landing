@@ -1,8 +1,8 @@
-import { useState } from "react";
 import "./LandingPage.css";
 
-// ⬇️ Mench's App Store listing. Change it here and every badge on the page updates.
+// ⬇️ Mench's store listings. Change them here and every badge on the page updates.
 const APP_STORE_URL = "https://apps.apple.com/us/app/mench-hq/id6760744751";
+const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.mench.app";
 
 // The MΞNCH logo, sized to sit inline with text. Use it anywhere the name appears.
 function M() {
@@ -39,31 +39,56 @@ function AppStoreBadge({ size = "lg", variant = "light" }) {
   );
 }
 
+function PlayLogo() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="appstore-logo playstore-logo">
+      <path
+        fill="currentColor"
+        d="M4.6 2.3c-.4.3-.6.8-.6 1.4v16.6c0 .6.2 1.1.6 1.4L13.8 12 4.6 2.3zm10.4 8.5 2.6-2.6L6.4 1.9c-.2-.1-.4-.2-.6-.2l9.2 9.1zm0 2.4-9.2 9.1c.2 0 .4-.1.6-.2l11.2-6.3-2.6-2.6zm6.1-2.3-2.4-1.4-2.8 2.5 2.8 2.5 2.4-1.4c.9-.5.9-1.7 0-2.2z"
+      />
+    </svg>
+  );
+}
+
+// "Get it on Google Play" badge. Same sizes and variants as AppStoreBadge.
+function GooglePlayBadge({ size = "lg", variant = "light" }) {
+  return (
+    <a
+      href={GOOGLE_PLAY_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`appstore-badge appstore-badge--${size} appstore-badge--${variant}`}
+      aria-label="Get Mench on Google Play"
+    >
+      <PlayLogo />
+      <span className="appstore-text">
+        <span className="appstore-small">Get it on</span>
+        <span className="appstore-big">Google Play</span>
+      </span>
+    </a>
+  );
+}
+
+// Both store badges side by side; they stack on narrow screens.
+function StoreBadges({ size = "lg", variant = "light" }) {
+  return (
+    <div className={`store-badges store-badges--${size}`}>
+      <AppStoreBadge size={size} variant={variant} />
+      <GooglePlayBadge size={size} variant={variant} />
+    </div>
+  );
+}
+
 function Nav() {
   return (
     <nav className="nav">
       <img src="/mench_logo_transparent.png" alt="Mench" className="nav-logo" />
-      <AppStoreBadge size="sm" variant="dark" />
+      <StoreBadges size="sm" variant="dark" />
     </nav>
   );
 }
 
 function Hero() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!email) return;
-    const { createClient } = await import('@supabase/supabase-js');
-    const supabase = createClient(
-      import.meta.env.VITE_SUPABASE_URL,
-      import.meta.env.VITE_SUPABASE_ANON_KEY
-    );
-    await supabase.from('beta_signups').insert({ email });
-    setSubmitted(true);
-  };
-
   return (
     <section className="hero">
       <h1 className="hero-headline">
@@ -74,29 +99,9 @@ function Hero() {
         there before the work starts.
       </p>
       <div className="hero-download">
-        <AppStoreBadge size="lg" />
-        <p className="hero-download-note">Free on iPhone</p>
+        <StoreBadges size="lg" />
+        <p className="hero-download-note">Free on iPhone and Android</p>
       </div>
-      {submitted ? (
-        <p className="beta-thanks">You're on the list.</p>
-      ) : (
-        <form className="beta-form" onSubmit={handleSubmit}>
-          <p className="beta-heading">Not on iPhone? Get notified</p>
-          <div className="beta-row">
-            <input
-              type="email"
-              className="beta-input"
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <button type="submit" className="btn-primary">
-              Request Access
-            </button>
-          </div>
-        </form>
-      )}
     </section>
   );
 }
@@ -178,9 +183,9 @@ function HowItWorks() {
 function DownloadCTA() {
   return (
     <section className="section download-section">
-      <h2 className="section-title">Get <M /> on your iPhone.</h2>
-      <p className="section-sub">Free to download.</p>
-      <AppStoreBadge size="lg" />
+      <h2 className="section-title">Get <M /> on your phone.</h2>
+      <p className="section-sub">Free on the App Store and Google Play.</p>
+      <StoreBadges size="lg" />
     </section>
   );
 }
