@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/letusknow", "destination": "/letusknow.html" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
